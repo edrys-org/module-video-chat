@@ -19,8 +19,8 @@
     <template x-if="!!edrys && !!url" x-data="{ edrys: undefined, url: undefined }" 
               x-init="Edrys.onUpdate((e) => { 
                             edrys = {...e} 
-                            url = `https://meet.jit.si/edrys-${edrys.class_id}-${edrys.liveRoom.name)}#config.prejoinPageEnabled=false&userInfo.displayName="${edrys.liveUser.displayName}"` }
-                        )">
+                            url = `https://meet.jit.si/edrys-${edrys.class_id}-${edrys.liveRoom.name}#config.prejoinPageEnabled=false&userInfo.displayName="${edrys.liveUser.displayName}"` 
+                      })">
 
         <iframe :src="url" frameborder="0"></iframe>
     </template>
