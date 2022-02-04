@@ -6,49 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-    <meta name="description" content="An example module to create your own" />
+    <meta name="description" content="Live video chat module based on Jitsi" />
     <meta name="show-in" content="*" />
-    <title>Example Module</title>
+    <title>Video Chat</title>
   
     <script src="https://edrys-org.github.io/edrys/module/edrys.js"></script>
  
     <script defer src="https://edrys-org.github.io/edrys/module/vendor/alpine.min.js"></script>
-    <link rel="stylesheet" href="https://edrys-org.github.io/edrys/module/vendor/water.min.css" />
-    <link rel="stylesheet" href="https://edrys-org.github.io/edrys/module/vendor/open-iconic/css/open-iconic.min.css" />
 </head>
 
 <body>
-    <template x-if="!!edrys" x-data="{ edrys: undefined }" x-init="Edrys.onUpdate((e) => { edrys = {...e} })">
-        <div>
-            <h1>Example Module</h1>
-            <hr />
+    <template x-if="!!edrys && !!url" x-data="{ edrys: undefined, url: undefined }" 
+              x-init="Edrys.onUpdate((e) => { 
+                            edrys = {...e} 
+                            url = `https://meet.jit.si/edrys-${edrys.class_id}-${edrys.liveRoom.name)}#config.prejoinPageEnabled=false&userInfo.displayName="${edrys.liveUser.displayName}"` }
+                        )">
 
-            <h2>Room Data</h2>
-            <div x-text="JSON.stringify(edrys)"></div>
-
-            <h2>Send Message</h2>
-            <form x-data="{ subject: '', message: '' }" x-on:submit.prevent="Edrys.sendMessage(subject, message)">
-                <input type="text" required minlength="1" placeholder="Subject" x-model="subject" />
-                <input type="text" required minlength="1" placeholder="Body" x-model="message" />
-                <button type="submit">
-                    <span class="oi" data-glyph="arrow-thick-right" aria-hidden="true"></span>
-                    Send message
-                </button>
-            </form>
-
-            <h2>Received messages</h2>
-            <div x-data="{ messages: [] }" x-init="Edrys.onMessage((m) => { messages.push(m) })">
-                <em x-show="!messages.length">No messages received yet...</em>
-                <ul>
-                    <template x-for="message in messages">
-                        <li>
-                            <code x-text="message.from"></code>:
-                            <code x-text="message.subject"></code> - 
-                            <code x-text="message.body"></code>
-                        </li>
-                    </template>
-                </ul>
-            </div>
+        <iframe :src="url" frameborder="0"></iframe>
     </template>
 </body>
 </html>
+    
+    
