@@ -19,7 +19,7 @@
     <template x-if="!!edrys && !!url" x-data="{ edrys: undefined, url: undefined }" 
               x-init="Edrys.onUpdate((e) => { 
                             edrys = {...e} 
-                            let room = encodeURIComponent(edrys.liveRoom.name).replaceAll('\'', '')
+                            let room = encodeURIComponent(edrys.liveRoom.name).replace(/[\W_]+/g, '')
                             url = `https://meet.jit.si/edrys-${room}-${edrys.class_id}#config.prejoinPageEnabled=false&userInfo.displayName=%22${encodeURIComponent(edrys.liveUser.displayName)}%22&config.subject=%22${room}%22` 
                       })">
 
