@@ -19,8 +19,8 @@
     <template x-if="!!edrys && !!url" x-data="{ edrys: undefined, url: undefined }" 
               x-init="Edrys.onUpdate((e) => { 
                             edrys = {...e} 
-                            let room = encodeURIComponent(edrys.liveRoom.name).replace(/[\W_]+/g, '')
-                            url = `https://meet.jit.si/edrys-${room}-${edrys.class_id}#config.prejoinPageEnabled=false&userInfo.displayName=%22${encodeURIComponent(edrys.liveUser.displayName)}%22&config.subject=%22${room}%22` 
+                            let room = edrys.liveRoom.name.replace(/[\W_]+/g, '')
+                            url = `https://meet.jit.si/edrys-${encodeURIComponent(room)}-${edrys.class_id}#config.prejoinPageEnabled=false&userInfo.displayName=%22${encodeURIComponent(edrys.liveUser.displayName)}%22&config.subject=%22${room}%22` 
                       })">
 
         <iframe :src="url" frameborder="0" style="width:100%;height:100%;" allow="camera; microphone; fullscreen; display-capture;" ></iframe>
