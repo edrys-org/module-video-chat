@@ -10,6 +10,8 @@ Simply add this URL to your class modules:
 https://edrys-org.github.io/module-video-chat/
 ```
 
+## Development
+
 Please note **this module will only work when your Edrys server is running behind HTTPS**. Otherwise you will get errors about missing navigator objects and CORS violations. You can use [Caddy](https://caddyserver.com/download) to easily acheive that, for example:
 
 ```
