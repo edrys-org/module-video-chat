@@ -26,6 +26,6 @@ Optionally, you may specify the following config:
 
 ```
 {
-  instance: 'https://meet.jit.si'
+  "instance": "https://meet.jit.si"
 }
 ```
