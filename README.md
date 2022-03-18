@@ -1,6 +1,6 @@
 # Edrys Video Chat Module
 
-This module adds video chat rooms to Edrys. It is based on [Jitsi](https://meet.jit.si). By default it uses the free official Jitsi instance, but you can [specify any other one](https://jitsi.github.io/handbook/docs/community/community-instances) or [self-host your own](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-start).
+This module adds video chat rooms to Edrys. It is based on [Jitsi](https://meet.jit.si). By default it uses the free official Jitsi instance, but you can [specify any other one](https://jitsi.github.io/handbook/docs/community/community-instances) or [self-host your own](https://jitsi.github.io/handbook/docs/devops-guide/).
  
 ## Usage
 
