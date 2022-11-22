@@ -17,11 +17,16 @@
 
 <body>
     <template x-if="!!edrys && !!url" x-data="{ edrys: undefined, url: undefined }" 
-              x-init="Edrys.onUpdate((e) => { 
-                            edrys = {...e} 
+              x-init="Edrys.onUpdate((e) => {
+                            edrys = {...e}
                             let room = edrys.liveRoom.name.replace(/[\W_]+/g, '')
                             let instance = edrys.module.config?.instance || 'https://meet.jit.si'
-                            url = `${instance}/edrys-${encodeURIComponent(room)}-${edrys.class_id}#config.prejoinPageEnabled=false&userInfo.displayName=%22${encodeURIComponent(edrys.liveUser.displayName)}%22&config.subject=%22${room}%22` 
+                            let config = `&userInfo.displayName=%22${encodeURIComponent(edrys.liveUser.displayName)}%22`;
+                            config += '&config.prejoinPageEnabled=false';
+                            config += `&config.subject=%22${room}%22`;
+                            config += edrys.module.config?.config || '';
+                            config += edrys.module[edrys.role.toLowerCase()+'Config']?.config || '';
+                            url = `${instance}/edrys-${encodeURIComponent(room)}-${edrys.class_id}#${config}`
                       })">
 
         <iframe :src="url" frameborder="0" style="width:100%;height:100%;" allow="camera; microphone; fullscreen; display-capture;" ></iframe>
