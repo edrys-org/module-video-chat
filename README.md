@@ -23,9 +23,27 @@ This will run a new HTTPS server on https://localhost:8001 (assuming your Edrys 
 ### Configuration
 
 Optionally, you may specify the following config:
+General settings: `instance`, `config`
+General, Teacher, Student and Station settings: `config`
+`instance`:  selects a specific Jitsi Meet instance.
+The optionally `config` options are attached the URL.
+General settings `config` are attached first, then depending on the role `studentConfig` `teacherConfig` or `stationConfig`
+
+For config options see: [Jitsi Meet User Guide (advanced)](https://jitsi.github.io/handbook/docs/user-guide/user-guide-advanced/)
+e.g.:
 
 ```
-{
-  "instance": "https://meet.jit.si"
-}
+      "config": {
+        "instance": "https://meet.jit.si",
+        "config": "&config.startWithAudioMuted=true"
+      },
+      "studentConfig": {
+        "config": "&config.startWithVideoMuted=true&stud"
+      },
+      "teacherConfig": {
+        "config": "&config.startWithVideoMuted=true&teach"
+      },
+      "stationConfig": {
+        "config": "&config.startWithVideoMuted=false&station"
+      },
 ```
